@@ -1,0 +1,4 @@
+- name: write the entity README
+  template:
+    src: README.md.j2
+    dest: "{{entityPackage}}/{{project.name}}.md

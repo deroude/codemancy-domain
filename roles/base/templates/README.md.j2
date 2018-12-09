@@ -1,0 +1,14 @@
+# {{ project.name }}
+
+{{ project.description }}
+
+## Attributes
+
+{% for field in (project.relations|selectattr('name','equalto','fields')|first).children|list %}
+### {{ field.name }}
+
+{{ field.description }}
+
+__Type__: {{field.type}}
+
+{% endfor %}
