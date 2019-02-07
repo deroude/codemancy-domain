@@ -2,13 +2,19 @@
 
 {{ project.description }}
 
-## Attributes
+## Entities
 
-{% for field in (project.relations|selectattr('name','equalto','fields')|first).children|list %}
-### {{ field.name }}
+{% for entity in (project.relations|selectattr('name','equalto','entities')|first).children|list %}
+### {{ entity.name }}
 
-{{ field.description }}
+{{ entity.description }}
 
-__Type__: {{field.type}}
+#### Attributes
 
+{% for field in (entity.relations|selectattr('name','equalto','fields')|first).children|list %}
+##### {{ field.name }} : {{ field.description }}
+
+__Type__: {{ (field.attributes|selectattr('name','equalto','type')|first).value }}
+
+{% endfor %}
 {% endfor %}

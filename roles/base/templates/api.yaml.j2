@@ -1,0 +1,41 @@
+openapi: "3.0.2"
+
+info:
+  version: "0.0.1"
+  title: {{ project.name }}
+  description:
+    Provides repository service for Application
+servers:
+  - url: /
+paths:
+{% for entity in (project.relations|selectattr('name','equalto','entities')|first).children|list %}
+  "/v1/{{ entity.name }}":
+    get:
+      tags:
+        - {{ entity.name }}
+      operationId: get{{ entity.name }}
+      description: Retrieve all entities of type {{ entity.name }}
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/'
+{% endfor %}
+components:
+  schemas:
+{% for entity in (project.relations|selectattr('name','equalto','entities')|first).children|list %}
+    {{ entity.name }}:
+      description: {{ entity.description }}
+      required:
+{% for field in (entity.relations|selectattr('name','equalto','fields')|first).children|list %}
+        - {{ field.name }}
+{% endfor %}
+      properties:
+{% for field in (entity.relations|selectattr('name','equalto','fields')|first).children|list %}
+        {{ field.name }} :
+            description: {{ field.description }}
+            type: {{ (field.attributes|selectattr('name','equalto','type')|first).value }}
+{% endfor %}
+{% endfor %}
