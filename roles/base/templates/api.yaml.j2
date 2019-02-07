@@ -51,7 +51,7 @@ paths:
     get:
       tags:
         - {{ entity.name }}
-      operationId: get{{ entity.name }}by{{ field.name }}
+      operationId: get{{ entity.name }}by{{ field.name|capitalize }}
       description: Retrieve a single entity of type {{ entity.name }}
       parameters:
         - name: {{ field.name }}
@@ -77,7 +77,7 @@ paths:
     put:
       tags:
         - {{ entity.name }}
-      operationId: update{{ entity.name }}by{{ field.name }}
+      operationId: update{{ entity.name }}by{{ field.name|capitalize }}
       description: Modify a single entity of type {{ entity.name }}
       parameters:
         - name: {{ field.name }}
@@ -112,7 +112,7 @@ paths:
     delete:
       tags:
         - {{ entity.name }}
-      operationId: delete{{ entity.name }}by{{ field.name }}
+      operationId: delete{{ entity.name }}by{{ field.name|capitalize }}
       description: Delete a single entity of type {{ entity.name }}
       parameters:
         - name: {{ field.name }}
