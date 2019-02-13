@@ -1,7 +1,7 @@
 {
   "name": "Domain",
   "description": "The application model",
-  "access": 3,
+  "access": 1,
   "category": "DOMAIN",
   "relations": [
     {
