@@ -9,7 +9,7 @@ servers:
   - url: /
 paths:
 {% for entity in (project.relations|selectattr('name','equalto','entities')|first).children|list %}
-  "/v1/{{ entity.name }}":
+  "/v1/{{ entity.name|lower }}":
     get:
       tags:
         - {{ entity.name }}
@@ -21,7 +21,119 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/'
+                type: array
+                items:
+                  $ref: '#/components/schemas/{{ entity.name }}'
+    post:
+      tags:
+        - {{ entity.name }}
+      operationId: add{{ entity.name }}
+      description: Add a new entity of type {{ entity.name }}
+      requestBody:
+        description: new entity to add
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/{{ entity.name }}'
+      responses:
+        '201':
+          description: Successfully added
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/{{ entity.name }}'
+        '400':
+          description: Payload incorrect
+{% for field in (entity.relations|selectattr('name','equalto','fields')|first).children|list %}
+{% if (field.attributes|selectattr('name','equalto','id')|first).value %}
+  "/v1/{{ entity.name|lower }}/{{'{'}}{{ field.name }}{{'}'}}":
+    get:
+      tags:
+        - {{ entity.name }}
+      operationId: get{{ entity.name }}by{{ field.name|capitalize }}
+      description: Retrieve a single entity of type {{ entity.name }}
+      parameters:
+        - name: {{ field.name }}
+          in: path
+          description: ID of entity to fetch
+          required: true
+          schema:
+{% with type = (field.attributes|selectattr('name','equalto','type')|first).value %}
+            type: {{ type|lower }}
+{% if type == 'Integer' %}
+            format: int64
+{% endif %}
+{% endwith %}
+      responses:
+        '200':
+          description: Successfully Retrieved
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/{{ entity.name }}'
+        '404':
+          description: Entity not found
+    put:
+      tags:
+        - {{ entity.name }}
+      operationId: update{{ entity.name }}by{{ field.name|capitalize }}
+      description: Modify a single entity of type {{ entity.name }}
+      parameters:
+        - name: {{ field.name }}
+          in: path
+          description: ID of entity to fetch
+          required: true
+          schema:
+{% with type = (field.attributes|selectattr('name','equalto','type')|first).value %}
+            type: {{ type|lower }}
+{% if type == 'Integer' %}
+            format: int64
+{% endif %}
+{% endwith %}
+      requestBody:
+        description: updated entity
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/{{ entity.name }}'
+      responses:
+        '200':
+          description: Successfully Updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/{{ entity.name }}'
+        '404':
+          description: Entity not found
+        '400':
+          description: Payload incorrect
+    delete:
+      tags:
+        - {{ entity.name }}
+      operationId: delete{{ entity.name }}by{{ field.name|capitalize }}
+      description: Delete a single entity of type {{ entity.name }}
+      parameters:
+        - name: {{ field.name }}
+          in: path
+          description: ID of entity to fetch
+          required: true
+          schema:
+{% with type = (field.attributes|selectattr('name','equalto','type')|first).value %}
+            type: {{ type|lower }}
+{% if type == 'Integer' %}
+            format: int64
+{% endif %}
+{% endwith %}
+      responses:
+        '200':
+          description: Successfully Deleted
+        '404':
+          description: Entity not found 
+
+{% endif %}
+{% endfor %}        
 {% endfor %}
 components:
   schemas:
@@ -36,6 +148,6 @@ components:
 {% for field in (entity.relations|selectattr('name','equalto','fields')|first).children|list %}
         {{ field.name }} :
             description: {{ field.description }}
-            type: {{ (field.attributes|selectattr('name','equalto','type')|first).value }}
+            type: {{ (field.attributes|selectattr('name','equalto','type')|first).value|lower }}
 {% endfor %}
 {% endfor %}
