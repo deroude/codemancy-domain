@@ -1,5 +1,5 @@
 {
-  "name": "Domain",
+  "name": "domain",
   "description": "The application model",
   "access": 1,
   "category": "DOMAIN",
