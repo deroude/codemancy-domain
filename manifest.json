@@ -1,7 +1,7 @@
 {
-  "name": "Domain",
+  "name": "domain",
   "description": "The application model",
-  "access": 3,
+  "access": 1,
   "category": "DOMAIN",
   "relations": [
     {
@@ -262,7 +262,7 @@
                       "order": 1,
                       "type": "type",
                       "value": "reference",
-                      "possibleValuesReference": "domain"
+                      "possibleValuesReference": "entities"
                     },
                     {
                       "name": "fk",
