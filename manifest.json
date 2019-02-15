@@ -235,7 +235,7 @@
                       "access": 0,
                       "order": 6,
                       "type": "boolean",
-                      "value": true
+                      "value": false
                     },
                     {
                       "name": "optional",
