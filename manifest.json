@@ -331,7 +331,7 @@
         {"name": "Authentication",
           "description": "An Entity used to perform authentication",
           "access": 3,
-          "category": "DOMAIN_ENTITY",
+          "category": "AUTHENTICATION_ENTITY",
           "relations": [
             {
               "name": "fields",
