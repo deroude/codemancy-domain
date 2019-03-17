@@ -341,7 +341,7 @@
               "access": 5,
               "children":[
                 {
-                  "name": "Username",
+                  "name": "username",
                   "description": "The username field",
                   "access": 1,
                   "category": "DOMAIN_ENTITY_FIELD",
@@ -419,7 +419,7 @@
                   ]
                 },
                 {
-                  "name": "Password",
+                  "name": "password",
                   "description": "The password field",
                   "access": 1,
                   "category": "DOMAIN_ENTITY_FIELD",
@@ -497,7 +497,7 @@
                   ]
                 },
                 {
-                  "name": "Role",
+                  "name": "role",
                   "description": "The User Role",
                   "access": 1,
                   "category": "DOMAIN_ENTITY_FIELD",
@@ -569,7 +569,7 @@
                   ]
                 },
                 {
-                  "name": "Status",
+                  "name": "status",
                   "description": "The User Status",
                   "access": 1,
                   "category": "DOMAIN_ENTITY_FIELD",
