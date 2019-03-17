@@ -4,7 +4,7 @@
 
 ## Entities
 
-{% for entity in (project.relations|selectattr('name','equalto','entities')|first).children|list %}
+{% for entity in (domain.relations|selectattr('name','equalto','entities')|first).children|list %}
 ### {{ entity.name }}
 
 {{ entity.description }}

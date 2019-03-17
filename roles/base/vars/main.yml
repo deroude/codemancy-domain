@@ -1,0 +1,1 @@
+domain: "{{ (project.relations|selectattr('name','equalto','features')|first).children|selectattr('name','equalto','domain')|first }}"

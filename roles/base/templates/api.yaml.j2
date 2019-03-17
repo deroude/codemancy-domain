@@ -8,7 +8,7 @@ info:
 servers:
   - url: /
 paths:
-{% for entity in (project.relations|selectattr('name','equalto','entities')|first).children|list %}
+{% for entity in (domain.relations|selectattr('name','equalto','entities')|first).children|list %}
   "/v1/{{ entity.name|lower }}":
     get:
       tags:
@@ -137,7 +137,7 @@ paths:
 {% endfor %}
 components:
   schemas:
-{% for entity in (project.relations|selectattr('name','equalto','entities')|first).children|list %}
+{% for entity in (domain.relations|selectattr('name','equalto','entities')|first).children|list %}
     {{ entity.name }}:
       description: {{ entity.description }}
       required:
