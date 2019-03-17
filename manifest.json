@@ -328,8 +328,8 @@
             }
           ]
         },
-        {"name": "Authentication",
-          "description": "An Entity used to perform authentication",
+        {"name": "User",
+          "description": "An Entity used to perform user authentication",
           "access": 3,
           "category": "AUTHENTICATION_ENTITY",
           "relations": [
@@ -529,6 +529,78 @@
                       "type": "enumeration",
                       "value": true,
                       "possibleValues":["ADMIN","BASIC"]
+                    },
+                    {
+                      "name": "id",
+                      "label": "Id field",
+                      "description": "Is this field the unique id?",
+                      "access": 0,
+                      "order": 4,
+                      "type": "boolean",
+                      "value": false
+                    },
+                    {
+                      "name": "generated",
+                      "label": "Generated field",
+                      "description": "Is this field auto-generated?",
+                      "access": 0,
+                      "order": 5,
+                      "type": "boolean",
+                      "value": false
+                    },
+                    {
+                      "name": "basic",
+                      "label": "Basic",
+                      "description": "Is this field basic (i.e.) not a foreign key?",
+                      "access": 0,
+                      "order": 6,
+                      "type": "boolean",
+                      "value": true
+                    },
+                    {
+                      "name": "optional",
+                      "label": "Optional",
+                      "description": "Is this field optional?",
+                      "access": 3,
+                      "order": 8,
+                      "type": "boolean",
+                      "value": false
+                    }
+                  ]
+                },
+                {
+                  "name": "Status",
+                  "description": "The User Status",
+                  "access": 1,
+                  "category": "DOMAIN_ENTITY_FIELD",
+                  "attributes": [
+                    {
+                      "name": "type",
+                      "label": "Field type",
+                      "description": "The field type",
+                      "access": 3,
+                      "order": 1,
+                      "type": "type",
+                      "value": "enumeration"
+                    },
+                    {
+                      "name": "fk",
+                      "label": "Foreign Key",
+                      "description": "The FK reference",
+                      "access": 0,
+                      "order": 2,
+                      "type": "string",
+                      "value": "None"
+                    },
+                    {
+                      "name": "enum",
+                      "label": "Enumeration",
+                      "description": "Enumeration values for this field",
+                      "access": 0,
+                      "order": 3,
+                      "type": "enumeration",
+                      "value": true,
+                      "possibleValues":["ACTIVE","INACTIVE"]
                     },
                     {
                       "name": "id",
