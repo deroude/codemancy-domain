@@ -59,7 +59,7 @@
                       "name": "display",
                       "label": "Display field",
                       "description": "This field is used to label this entity",
-                      "access": 0,
+                      "access": 3,
                       "order": 9,
                       "type": "boolean",
                       "value": false
