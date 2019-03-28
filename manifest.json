@@ -420,8 +420,17 @@
                       "name": "optional",
                       "label": "Optional",
                       "description": "Is this field optional?",
-                      "access": 3,
+                      "access": 1,
                       "order": 8,
+                      "type": "boolean",
+                      "value": false
+                    },
+                    {
+                      "name": "display",
+                      "label": "Display field",
+                      "description": "This field is used to label this entity",
+                      "access": 1,
+                      "order": 9,
                       "type": "boolean",
                       "value": false
                     }
@@ -570,7 +579,7 @@
                       "name": "optional",
                       "label": "Optional",
                       "description": "Is this field optional?",
-                      "access": 3,
+                      "access": 1,
                       "order": 8,
                       "type": "boolean",
                       "value": false
@@ -642,7 +651,7 @@
                       "name": "optional",
                       "label": "Optional",
                       "description": "Is this field optional?",
-                      "access": 3,
+                      "access": 1,
                       "order": 8,
                       "type": "boolean",
                       "value": false
