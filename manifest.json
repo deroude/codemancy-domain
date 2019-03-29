@@ -432,7 +432,7 @@
                       "access": 1,
                       "order": 9,
                       "type": "boolean",
-                      "value": false
+                      "value": true
                     }
                   ]
                 },
