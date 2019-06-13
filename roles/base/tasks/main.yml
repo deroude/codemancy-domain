@@ -1,8 +1,8 @@
 - name: write the entity README
   template:
     src: README.md.j2
-    dest: "{{entityPackage}}/{{project.name}}.md"
+    dest: "{{targetDir}}/{{project.name}}.md"
 - name: write the API descriptor
   template:
     src: api.yaml.j2
-    dest: "{{entityPackage}}/{{project.name}}.yaml"
+    dest: "{{targetDir}}/{{project.name}}.yaml"
