@@ -339,7 +339,7 @@
         },
         {"name": "User",
           "description": "An Entity used to perform user authentication",
-          "access": 1,
+          "access": 3,
           "category": "AUTHENTICATION_ENTITY",
           "relations": [
             {
